@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Fork Me! FCC: Test Suite Template</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+<main id="main-doc">
+  <section class="main-section" id="Introduction">
+    <header>Introduction</header>
+    <article>
+      <p>Streaming data is a big deal in big data these days. As more and more businesses seek to tame the massive unbounded data sets that pervade our world, streaming systems have finally reached a level of maturity sufficient for mainstream adoption.</p>
+      <ul>
+      <li>With this practical guide, data engineers, data scientists, and developers will learn how to work with streaming data in a conceptual and platform-agnostic way.</li>
+      <li>Expanded from Tyler Akidau’s popular blog posts Streaming 101 and Streaming 102, this book takes you from an introductory level to a nuanced understanding of the what, where, when, and how of processing real-time data streams.</li> 
+      <li>You’ll also dive deep into watermarks and exactly-once processing with coauthors Slava Chernyak and Reuven Lax.</li></ul>
+      </article>
+    </section>
+  <section class="main-section" id="1._Streaming_101">
+    <header >1. Streaming 101</header>
+    <article>
+    <p>Why streaming is awesome, death to Lambda Architecture, data processing patterns.</p>
+      </article>
+    </section>
+  <section class="main-section" id="2._The_What,_Where,_When,_and_How_of_Data_Processing">
+    <header>2. The What, Where, When, and How of Data Processing</header>
+    <article>
+    <p>The basics, explained in prose, animation, limmerick, and interpretive dance.</p>
+    <p><a href="https://www.oreilly.com/ideas/the-world-beyond-batch-streaming-102">Here are some examples using Apache Beam in Java:</a></p>
+    <code>PCollection<String> raw = IO.read(...);
+PCollection<KV<String, Integer>> input = raw.apply(ParDo.of(new ParseFn());
+PCollection<KV<String, Integer>> scores = input
+  .apply(Sum.integersPerKey());</code>
+     <code>PCollection<KV<String, Integer>> scores = input
+  .apply(Window.into(FixedWindows.of(Duration.standardMinutes(2))))
+  .apply(Sum.integersPerKey());</code>
+      <code>PCollection<KV<String, Integer>> scores = input
+  .apply(Window.into(FixedWindows.of(Duration.standardMinutes(2)))
+               .triggering(AtWatermark()))
+  .apply(Sum.integersPerKey());</code>
+      <code>PCollection<KV<String, Integer>> scores = input
+  .apply(Window.into(FixedWindows.of(Duration.standardMinutes(2)))
+               .triggering(Sequence(
+                 Repeat(AtPeriod(Duration.standardMinutes(1)))
+                   .OrFinally(AtWatermark()),
+                 Repeat(AtCount(1))))
+  .apply(Sum.integersPerKey());</code>
+      <code>PCollection<KV<String, Integer>> scores = input
+  .apply(Window.into(FixedWindows.of(Duration.standardMinutes(2)))
+               .triggering(
+                 AtWatermark()
+                   .withEarlyFirings(AtPeriod(Duration.standardMinutes(1)))
+                   .withLateFirings(AtCount(1))))
+  .apply(Sum.integersPerKey());</code>
+      <article>
+    </section>
+  <section class="main-section" id="3._Watermarks">
+    <header>3. Watermarks</header>
+    <article>
+    <p>Progress and completeness in unbounded data sets, how watermarks are established and propagated, real-world examples.</p>
+      </article>
+    </section>
+  <section class="main-section" id="4._Advanced_Windowing">
+    <header>4. Advanced Windowing</header>
+    <article>
+    <p>Practical considerations for going beyond the basics: processing-time windows, sessions, and the importance of custom windowing.</p>
+      </article>
+    </section>
+  <section class="main-section" id="5._Exactly-Once_and_Side_Effects">
+    <header>5. Exactly-Once and Side Effects</header>
+    <article>
+    <p>The illusionary art of creating perfection out of imperfection; the mythical beasts known as idempotence and determinism;</p> 
+    <li>How Apache Flink, Apache Spark, and Google Cloud Dataflow work their magic</li>
+      </article>
+    </section>
+  <section class="main-section" id="6._Streams_and_Tables">
+    <header>6. Streams and Tables</header>
+    <article>
+    <p>The basis for life, the universe, and everything, assuming a data-processingly skewed definition of the above, or: that feeling when you realize everything you do was invented by the database community decades ago.</p>
+      </article>
+    </section>
+  <section class="main-section" id="7._The_Practicalities_of_Persistent_State">
+    <header>7. The Practicalities of Persistent State</header>
+    <article>
+    <p>For those "functional programming be damned, just give me a Turing machine" kinds of days.</p>
+      </article>
+    </section>
+  <section class="main-section" id="8._Streaming_SQL">
+    <header>8. Streaming SQL</header>
+    <article>
+    <li>Contorting relational algebra for fun and profit.</li> 
+    <li>Also, time-varying relations will change your life.</li>
+      </article>
+    </section>
+  <section class="main-section" id="9._Streaming_Joins">
+    <header>9. Streaming Joins</header>
+    <article>
+    <p>A brief moment of panic upon realizing that all joins are streaming at the core, followed by a prolonged sense of relief upon realizing it makes them all the easier to understand.</p>
+      </article>
+    </section>
+  <section class="main-section" id="10._The_Evolution_of_Large-Scale_Data_Processing">
+    <header>10. The Evolution of Large-Scale Data Processing</header>
+    <article>
+    <p>An opinionated history of stream processing in the MapReduce lineage of systems, with a healthy dose of source material citations for drawing your own conclusions.</p>
+    </article>
+      </section>
+     <section class="main-section" id="Reference">
+    <header>Reference</header>
+    <article>
+    <p>The above materials are taken from <a href="http://streamingsystems.net/">Streaming Systems</a></p>
+    </article>
+      </section>
+    </main>
+    
+   <nav id="navbar">
+     <header>Streaming Systems</header>
+     <ul>
+       <a class="nav-link" href="#Introduction" rel="internal"><li>Introduction</li></a>
+       <a class="nav-link" href="#1._Streaming_101" rel="internal"><li>1. Streaming 101</li></a>
+       <a class="nav-link" href="#2._The_What,_Where,_When,_and_How_of_Data_Processing" rel="internal"><li>2. The What, Where, When, and How of Data Processing</li></a>
+       <a class="nav-link" href="#3._Watermarks" rel="internal"><li>3. Watermarks</li></a>
+       <a class="nav-link" href="#4._Advanced_Windowing" rel="internal"><li>4. Advanced Windowing</li></a>
+       <a class="nav-link" href="#5._Exactly-Once_and_Side_Effects" rel="internal"><li>5. Exactly-Once and Side Effects</li></a>
+       <a class="nav-link" href="#6._Streams_and_Tables" rel="internal"><li>6. Streams and Tables</li></a>
+       <a class="nav-link" href="#7._The_Practicalities_of_Persistent_State" rel="internal"><li>7. The Practicalities of Persistent State</li></a>
+       <a class="nav-link" href="#8._Streaming_SQL" rel="internal"><li>8. Streaming SQL</li></a>
+       <a class="nav-link" href="#9._Streaming_Joins" rel="internal"><li>9. Streaming Joins</li></a>
+       <a class="nav-link" href="#10._The_Evolution_of_Large-Scale_Data_Processing" rel="internal"><li>10. The Evolution of Large-Scale Data Processing</li></a>
+       <a class="nav-link" href="#Reference" rel="internal"><li>Reference</li></a>
+     </ul>
+    </nav>
+  
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

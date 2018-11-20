@@ -1,0 +1,55 @@
+html{
+  line-height: 1.5;
+}
+#navbar{
+  position: fixed;
+  left: -45px;
+  top: 0px;
+  width: 320px;
+  height: 100%;
+  border-right:solid grey;
+}
+#main-doc{
+  position: absolute;
+  margin-left: 300px;
+  padding: 20px;
+}
+header{
+  color: black;
+  font-size: 1.5em;
+  margin: 5px;
+  text-align: center;
+}
+#main-doc header{
+  text-align: left;
+  margin: 0px;
+}
+#navbar ul{
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#navbar li{
+  border: 1px solid grey;
+  border-bottom-width: 0px;
+  padding: 5px;
+  padding-left: 15px;
+  color: black;
+}
+section article{
+  margin: 15px;
+  font-size: 0.95em;
+}
+section li{
+  margin: 5px 0px 0px 5px;
+}
+code{
+  display: block;
+  line-height: 2;
+  background-color: WhiteSmoke;
+  padding: 5px;
+  margin: 5px;
+}
+@media screen{
+  article{font-size: 10px;}
+}
