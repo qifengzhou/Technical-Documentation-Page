@@ -2,4 +2,4 @@ This is a brief introduction of the book "Streaming Systems", authored by Tyler 
 
 I am personally strongly recommend this book if you are curious about streaming systems, which has been becoming more and more important those days. You can get a glance of the book at https://qifengzhou.github.io/Technical-Documentation-Page/
 
- 
+This project is part of the freeCodeCamp Responsive Web Design Certification, toward the Full-stack Web Development Certification. 
